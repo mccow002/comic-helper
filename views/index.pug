@@ -1,0 +1,14 @@
+extends layout
+
+mixin folder(children)
+  ul
+    each child in children
+      li #{child.name}
+      if child.children.length > 0
+        +folder(child.children)
+
+block content
+  h1= title
+  ul
+    li #{folders.name}
+    +folder(folders.children)
